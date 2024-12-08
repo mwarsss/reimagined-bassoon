@@ -1,0 +1,28 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Exam {
+  id               Int      @id @default(autoincrement())
+  name             String
+  date             DateTime
+  time             String
+  venue            String
+  invigilator_count Int
+}
+
+model Invigilator {
+  id        Int      @id @default(autoincrement())
+  name      String
+  available Boolean  @default(true)
+}
+
+model Conflict {
+  id          Int      @id @default(autoincrement())
+  description String
+}
